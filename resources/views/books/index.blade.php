@@ -1,20 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BOOKSTORE</title>
-</head>
-<body>
-    <h1>Bookstore</h1>
+@extends('books.layout')
 
-    <table width="1330" border="1">
+@section('page-content')
+
+    {{-- <p class="text-end">
+        <a class="btn btn-primary" href="{{route('books.create')}}">Add New Book</a>
+    </p> --}}
+
+    <table width="1200" border="1">
         <tr>
             <th>ID</th>
             <th>Title</th>
             <th>Author</th>
             <th>Price</th>
             <th>Details</th>
+            <th>Delete</th>
         </tr>
 
         @foreach ($books as $book)
@@ -24,12 +23,17 @@
                 <td>{{$book ->author}}</td>
                 <td>{{$book ->price}}</td>
                 <td><a href="{{route('books.show',$book->id)}}">Details</a></td>
+                <td>
+                    <form method="post" action="{{route('books.destroy',$book->id)}}" onsubmit="return confirm('Sure?')">
+                        @csrf
+                        @method('DELETE')
+                        <input class="btn btn-link" type="submit" value="Delete">
+                    </form>
             </tr>
-
-
         @endforeach
     </table>
 
     {{$books->links()}}
-</body>
-</html>
+
+@endsection
+
