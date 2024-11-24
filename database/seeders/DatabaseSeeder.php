@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
+        Book::truncate();
         Book::factory(200)->create();
         // User::factory()->create([
         //     'name' => 'Test User',

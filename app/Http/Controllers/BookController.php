@@ -13,10 +13,17 @@ class BookController extends Controller
         return view('welcome');
     }
 
-    public function index(){
+    public function index(Request $request){
 
-        $books = Book::paginate(15);
+        if($request -> has('search')){
+                $books = Book::where('title','like','%'.$request->search.'%')
+                ->orWhere('id','like','%'.$request->search.'%')
+                ->paginate(10);
+        }
 
+        else{
+            $books = Book::paginate(15);
+        }
 
         return view('books.index')
                 ->with('books',$books);

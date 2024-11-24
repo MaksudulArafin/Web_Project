@@ -21,9 +21,15 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
 
-            <a class="nav-link" href="{{route('books.index')}}">Home</a>
-            <a class="nav-link" href="{{route('books.create')}}">Create</a>
+
+                <a class="nav-link" href="{{route('books.index')}}">Home</a>
+                <a class="nav-link" href="{{route('books.create')}}">Create</a>
         </ul>
+        <form method="get" action="{{route('books.index')}}" class="form-inline">
+            <input type="text" class="form-control" id="search" name="search" placeholder="Search"
+                value="{{request('search')}}">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
     </div>
 </nav>
 <br><br>
