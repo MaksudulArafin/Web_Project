@@ -11,6 +11,7 @@
             <th>ID</th>
             <th>Title</th>
             <th>Author</th>
+            <th>ISBN</th>
             <th>Price</th>
             <th colspan="3">Action</th>
 
@@ -21,6 +22,7 @@
                 <td>{{$book ->id}}</td>
                 <td>{{$book ->title}}</td>
                 <td>{{$book ->author}}</td>
+                <td>{{$book ->isbn}}</td>
                 <td>{{$book ->price}}</td>
                 <td><a href="{{route('books.show',$book->id)}}">Details</a></td>
                 <td><a href="{{route('books.edit',$book->id)}}">Edit</a></td>
