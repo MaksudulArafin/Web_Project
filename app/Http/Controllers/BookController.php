@@ -72,4 +72,43 @@ class BookController extends Controller
 
         return redirect()->back();
     }
+
+    public function edit($id){
+
+        $book = Book::find($id);
+
+        return view('books.edit')
+            ->with('book',$book);
+    }
+
+    public function update(Request $request){
+        $rules = [
+            'title' => 'required',
+            'author'=> 'required',
+            'isbn' => 'required | max:13',
+            'stock' => 'required |numeric|integer|gte:0',
+            'price' => 'required | numeric'
+        ];
+
+        $messages = [
+            'stock.gte' => "The stock must be greater than or equal to 0(Zero)"
+        ];
+
+        $request ->validate($rules,$messages);
+
+        $book = Book::find($request->id);
+
+        $book->title = $request->title;
+          $book->author = $request->author;
+            $book->isbn = $request->isbn;
+              $book->stock = $request->stock;
+                $book->price = $request->price;
+                $book->save();
+
+                return redirect()->route('books.show',$book->id);
+
+        // echo '<pre>';
+        // print_r($request->all());
+        //  echo '</pre>';
+    }
 }

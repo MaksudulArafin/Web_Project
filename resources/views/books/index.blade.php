@@ -12,8 +12,8 @@
             <th>Title</th>
             <th>Author</th>
             <th>Price</th>
-            <th>Details</th>
-            <th>Delete</th>
+            <th colspan="3">Action</th>
+
         </tr>
 
         @foreach ($books as $book)
@@ -23,6 +23,7 @@
                 <td>{{$book ->author}}</td>
                 <td>{{$book ->price}}</td>
                 <td><a href="{{route('books.show',$book->id)}}">Details</a></td>
+                <td><a href="{{route('books.edit',$book->id)}}">Edit</a></td>
                 <td>
                     <form method="post" action="{{route('books.destroy',$book->id)}}" onsubmit="return confirm('Sure?')">
                         @csrf
