@@ -18,6 +18,7 @@ class BookController extends Controller
         if($request -> has('search')){
                 $books = Book::where('title','like','%'.$request->search.'%')
                 ->orWhere('id','like','%'.$request->search.'%')
+                ->orWhere('author','like','%'.$request->search.'%')
                 ->paginate(10);
         }
 

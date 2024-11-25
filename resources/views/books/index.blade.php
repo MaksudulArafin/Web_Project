@@ -5,6 +5,9 @@
     {{-- <p class="text-end">
         <a class="btn btn-primary" href="{{route('books.create')}}">Add New Book</a>
     </p> --}}
+    <p class="text-center text-danger">
+        <i class="bi bi-book" style="font-size: 6rem;"></i>
+    </p>
 
     <table width="1200" border="1">
         <tr>
