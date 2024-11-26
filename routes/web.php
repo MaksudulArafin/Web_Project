@@ -14,3 +14,4 @@ Route::delete('/books/{id}/delete',[BookController::class,'destroy'])->name('boo
 Route::get('/books/{id}/edit',[BookController::class,'edit'])->name('books.edit');
 Route::post('/books/update',[BookController::class,'update'])->name('books.update');
 
+

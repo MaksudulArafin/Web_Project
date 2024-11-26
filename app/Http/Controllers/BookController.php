@@ -19,7 +19,8 @@ class BookController extends Controller
                 $books = Book::where('title','like','%'.$request->search.'%')
                 ->orWhere('id','like','%'.$request->search.'%')
                 ->orWhere('author','like','%'.$request->search.'%')
-                ->paginate(10);
+                ->paginate(10)
+                ->appends(['search' => $request->search]); // Append search query
         }
 
         else{
@@ -70,6 +71,8 @@ class BookController extends Controller
 
         $book = Book::create($request->all());
         return redirect()->Route('books.show',$book->id);
+        // return view('books.show')
+        // ->with('book',$book);
     }
 
 
